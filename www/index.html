@@ -38,6 +38,9 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+        $('#btnD').click(function(e) {
+            btnDClick(e);
+        });
         init();
     });
     
@@ -153,6 +156,7 @@
     var active = false;
     var startTime = 0;
     var period = 0;
+    var nowtime = new Date();
 
     
     // ボタンの初期設定
@@ -160,7 +164,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
-        
+        $('#btnD').prop('disabled', false);
     }
 
     // Alarmの処理
@@ -201,8 +205,11 @@
         period = 60*parseInt( $("#minute").val()) + parseInt( $("#second").val());
         $("#time").html("経過時間:0"+"秒");
         $("#remain").html("残り時間:"+period+"秒");
-        
     }
+    function btnDClick(e){
+        $("#now").html("現在時刻：" + nowtime);
+    }
+
     
  
     // 繰り返し実行する処理
@@ -230,9 +237,11 @@
 
     <div id="remain">Remaining time</div>
     <div id="time">Time</div>
+    <div id="now">現在時刻</div>
     <button id="btnA">start</button>  
     <button id="btnB">Stop</button>  
     <button id="btnC">set</button>  
+    <button id="btnD">Now</button>
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
 </body>
